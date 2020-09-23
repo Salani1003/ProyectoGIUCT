@@ -1,0 +1,25 @@
+*{
+    font-family: 'Nunito', sans-serif; 
+}
+body{
+    background-color: rgb(209, 205, 255);
+   
+}
+.header{
+    background-color:rgb(5, 1, 59) ;
+    overflow: hidden;
+    display: block;
+    flex: initial;
+    text-align: center;
+    font-size: 300%;
+    font-weight: bold;
+    
+    
+}
+.logo{
+    color: white;
+    margin-top: 8%;
+}
+.cerebro{
+   width: 100%;
+}

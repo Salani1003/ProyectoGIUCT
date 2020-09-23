@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/giuctEstilos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>GIUCT</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <img class="cerebro" src="./assets/img/cerebro.png" alt="" />
+          </div>
+          <div class="col-sm-8">
+            <div class="logo">GIUCT</div>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >PERSONAS</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" onclick="agregarFormPersona()"
+                  >ALTA</a
+                >
+                <a class="dropdown-item" href="#" onclick="agregarFormMateria()"
+                  >ASIGNAR MATERIAS</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="agregarFormBajaPersona()"
+                  >BAJA</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="agregarModificacionPersona()"
+                  >MODIFICACION</a
+                >
+                <div class="dropdown-divider"></div>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="agregarconsultaPersona()"
+                  >CONSULTA</a
+                >
+              </div>
+            </li>
+          </ul>
+          <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >TRABAJOS
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" onclick="seleccionTrabajo()"
+                  >ALTA</a
+                >
+                <a class="dropdown-item" href="#" onclick="bajaTrabajo()"
+                  >BAJA</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  onclick="modificacionTrabajo()"
+                  >MODIFICACION</a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" onclick="consultaTrabajo()"
+                  >CONSULTA</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!--COMIENZA FORM DE PERSONA--------------------------------------->
+        <div class="hide" id="formPersona">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form action="#" class="p-3 form">
+            <div class="form-group">
+              <label for="name">Nombre*</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Apellido*</label>
+              <input
+                type="text"
+                name="apellido"
+                id="apellido"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Nivel Academico</label
+                >
+              </div>
+              <select class="custom-select" id="selectorAcademico">
+                <option selected>Seleccione uno</option>
+                <option value="1">Alumno</option>
+                <option value="2">Graduado</option>
+                <option value="3">Docente</option>
+              </select>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                onclick="horasSemanales()"
+              >
+                Cargar Horas
+              </button>
+            </div>
+            <span class="siEsAlumno">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasAlumno">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">6</option>
+                  <option value="2">12</option>
+                  <option value="3">18</option>
+                </select>
+              </div>
+            </span>
+
+            <span class="siEsGraduado">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasGraduado">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">12</option>
+                  <option value="2">20</option>
+                </select>
+              </div>
+            </span>
+
+            <span class="siEsDocente">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasDocente">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">10</option>
+                  <option value="2">15</option>
+                  <option value="3">20</option>
+                  <option value="4">40</option>
+                </select>
+              </div>
+            </span>
+
+            <div class="form-group">
+              <label for="name">DNI*</label>
+              <input
+                type="number"
+                name="dni"
+                id="dni"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">CUIL*</label>
+              <input
+                type="text"
+                name="cuil "
+                id="cuil"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Direccion Postal*</label>
+              <input
+                type="text"
+                name="direccionPostal"
+                id="direccionPostal"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Email Institucional*</label>
+              <input
+                type="email"
+                name="emailInstitucional"
+                id="emailInstitucional"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Email Personal*</label>
+              <input
+                type="email"
+                name="emailPersonal"
+                id="emailPersonal"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Telefono</label>
+              <input
+                type="number"
+                name="telefono "
+                id="telefono"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="name">Celular</label>
+              <input
+                type="number"
+                name="celular "
+                id="celular"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name"> Numero pasaporte</label>
+              <input
+                type="number"
+                name="numPasaporte "
+                id="numPasaporte"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name"> Fecha vencimiento pasaporte</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="vencimientoPasaporte "
+                id="vencimientoPasaporte"
+                class="form-control"
+                placeholder="DDMMAAAA"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador Utn</label
+                >
+              </div>
+              <select class="custom-select" id="selectorUtn">
+                <option selected>Seleccione una</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+                <option value="5">E</option>
+                <option value="6">F</option>
+                <option value="7">G</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionUtn "
+                id="numResolucionUtn"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionUtn "
+                id="FechaObtencionUtn"
+                class="form-control"
+                placeholder="DDMMAAAA"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador Nacional</label
+                >
+              </div>
+              <select class="custom-select" id="selectorNacional">
+                <option selected>Seleccione una</option>
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+                <option value="4">IV</option>
+                <option value="5">V</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionNacional "
+                id="numResolucionNacional"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionNacional "
+                id="FechaObtencionNacional "
+                placeholder="DDMMAAAA"
+                class="form-control"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador CONICET</label
+                >
+              </div>
+              <select class="custom-select" id="selectorConicet">
+                <option selected>Seleccione una</option>
+                <option value="1">SUPERIOR</option>
+                <option value="2">PRINCIPAL</option>
+                <option value="3">INDEPENDIENTE</option>
+                <option value="4">ADJUNTO</option>
+                <option value="5">ASISTENTE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionConicet "
+                id="numResolucionConicet"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionConicet "
+                id="FechaObtencionConicet"
+                class="form-control"
+                placeholder="DDMMAAAA"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador CIC</label
+                >
+              </div>
+              <select class="custom-select" id="selectorCic">
+                <option selected>Seleccione una</option>
+                <option value="1">SUPERIOR</option>
+                <option value="2">PRINCIPAL</option>
+                <option value="3">INDEPENDIENTE</option>
+                <option value="4">ADJUNTO</option>
+                <option value="5">ASISTENTE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionCic "
+                id="numResolucionCic"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionCic "
+                id="FechaObtencionCic"
+                class="form-control"
+                placeholder="DDMMAAAA"
+              />
+            </div>
+
+            <button
+              class="btn btn-outline-success"
+              id="procesarPersona"
+              onclick="agregarPersona()"
+            >
+              Alta Persona
+            </button>
+          </form>
+        </div>
+        <!--ACA TERMINA EL FORM DE PERSONA-->
+
+        <!--ACA EMPIEZA EL FORM DE MATERIAS-->
+        <div class="hide" id="formMateria">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form action="#" class="p-3 form">
+            <div class="form-group">
+              <label for="name">DNI*</label>
+              <input
+                type="number"
+                name="dniMateria"
+                id="dniMateria"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="name">Nombre de la Materia *</label>
+              <input
+                type="text"
+                name="nombreMateria"
+                id="nombreMateria"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria de cargos</label
+                >
+              </div>
+              <select class="custom-select" id="cargoDocente">
+                <option selected>Seleccione una</option>
+                <option value="1">Profesor titular</option>
+                <option value="2">Profesor asociado</option>
+                <option value="3">Profesor adjunto</option>
+                <option value="4">JTP</option>
+                <option value="5">Ayudante 1° - Diplomado</option>
+                <option value="6">Ayudante 2° - Alumno</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria de dedicaciones</label
+                >
+              </div>
+              <select class="custom-select" id="dedicacionesDocente">
+                <option selected>Seleccione una</option>
+                <option value="1">Simple</option>
+                <option value="2">Semi Exclusiva</option>
+                <option value="3">Exclusiva</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-outline-success"
+              onclick="procesarMateria()"
+            >
+              Agregar Materia
+            </button>
+          </form>
+        </div>
+
+        <!--ACA TERMINA EL FORM DE MATERIAS-->
+
+        <!--ACA EMPIEZA EL FORM DE BAJA PERSONA-->
+
+        <div class="hide" id="formBajaPersona">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form>
+            <div class="form-group">
+              <label for="name">DNI*</label>
+              <input
+                type="number"
+                name="dniBaja"
+                id="dniBaja"
+                class="form-control"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-outline-danger"
+              onclick="procesarBajaPersona()"
+            >
+              Baja
+            </button>
+          </form>
+        </div>
+        <!--ACA TERMINA EL FORM DE BAJA PERSONA-->
+
+        <!--ACA EMPIEZA EL FORM DE BAJA MODIFICACIONES DE PERSONA-->
+        <div class="hide" id="formModificacionPersona">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form>
+            <div class="form-group">
+              <label for="name">DNI*</label>
+              <input
+                type="number"
+                name="dniModificacion"
+                id="dniModificacion"
+                class="form-control"
+                required
+              />
+              <br />
+              <button
+                class="btn btn-outline-success"
+                onclick="solicitarModificacionPersona()"
+              >
+                Buscar
+              </button>
+            </div>
+          </form>
+        </div>
+        <!--ACA TERMINA EL FORM DE MODIFICACIONES DE PERSONA-->
+
+        <!--ACA EMPIEZA EL FORM DE CONSULTA DE PERSONAS-->
+        <div class="hide" id="formConsultaPersona">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form>
+            <div class="form-group">
+              <label for="name">DNI*</label>
+              <input
+                type="number"
+                name="dniConsulta"
+                id="dniConsulta"
+                class="form-control"
+                required
+              />
+              <br />
+            </div>
+          </form>
+          <button
+            class="btn btn-outline-success"
+            onclick="solicitarConsultaPersona()"
+          >
+            Buscar
+          </button>
+        </div>
+        <!--ACA TERMINA EL FORM DE CONSULTA DE PERSONAS-->
+
+        <!--ACA EMPIEZA EL FORM DE SOLICITUD PARA LA MODIFICACION DE UNA PERSONA-->
+        <div class="hide" id="solicitudModificacion">
+          <p class="obligatorio">Los campos con (*)son obligatorios</p>
+          <form action="#" class="p-3 form">
+            <div class="form-group">
+              <label for="name">Nombre*</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Apellido*</label>
+              <input
+                type="text"
+                name="apellido"
+                id="apellido"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Nivel Academico</label
+                >
+              </div>
+              <select class="custom-select" id="selectorAcademico">
+                <option selected>Seleccione uno</option>
+                <option value="1">Alumno</option>
+                <option value="2">Graduado</option>
+                <option value="3">Docente</option>
+              </select>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                onclick="horasSemanales()"
+              >
+                Cargar Horas
+              </button>
+            </div>
+            <span class="siEsAlumno">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasAlumno">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">6</option>
+                  <option value="2">12</option>
+                  <option value="3">18</option>
+                </select>
+              </div>
+            </span>
+
+            <span class="siEsGraduado">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasGraduado">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">12</option>
+                  <option value="2">20</option>
+                </select>
+              </div>
+            </span>
+
+            <span class="siEsDocente">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"
+                    >Horas Semanales dedicadas</label
+                  >
+                </div>
+                <select class="custom-select" id="horasDocente">
+                  <option selected>Seleccione uno</option>
+                  <option value="1">10</option>
+                  <option value="2">15</option>
+                  <option value="3">20</option>
+                  <option value="4">40</option>
+                </select>
+              </div>
+            </span>
+
+            <div class="form-group">
+              <label for="name">CUIL*</label>
+              <input
+                type="text"
+                name="cuil "
+                id="cuil"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Direccion Postal*</label>
+              <input
+                type="text"
+                name="direccionPostal"
+                id="direccionPostal"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Email Institucional*</label>
+              <input
+                type="email"
+                name="emailInstitucional"
+                id="emailInstitucional"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Email Personal*</label>
+              <input
+                type="email"
+                name="emailPersonal"
+                id="emailPersonal"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Telefono</label>
+              <input
+                type="number"
+                name="telefono "
+                id="telefono"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="name">Celular</label>
+              <input
+                type="number"
+                name="celular "
+                id="celular"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name"> Numero pasaporte</label>
+              <input
+                type="number"
+                name="numPasaporte "
+                id="numPasaporte"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name"> Fecha vencimiento pasaporte</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="vencimientoPasaporte "
+                id="vencimientoPasaporte"
+                class="form-control"
+                placeholder="DDMMAAAA"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador Utn</label
+                >
+              </div>
+              <select class="custom-select" id="selectorUtn">
+                <option selected>Seleccione una</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+                <option value="5">E</option>
+                <option value="6">F</option>
+                <option value="7">G</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionUtn "
+                id="numResolucionUtn"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionUtn "
+                id="FechaObtencionUtn"
+                class="form-control"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador Nacional</label
+                >
+              </div>
+              <select class="custom-select" id="selectorNacional">
+                <option selected>Seleccione una</option>
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+                <option value="4">IV</option>
+                <option value="5">V</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionNacional "
+                id="numResolucionNacional"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionNacional "
+                id="FechaObtencionNacional"
+                class="form-control"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador CONICET</label
+                >
+              </div>
+              <select class="custom-select" id="selectorConicet">
+                <option selected>Seleccione una</option>
+                <option value="1">SUPERIOR</option>
+                <option value="2">PRINCIPAL</option>
+                <option value="3">INDEPENDIENTE</option>
+                <option value="4">ADJUNTO</option>
+                <option value="5">ASISTENTE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionConicet "
+                id="numResolucionConicet"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionConicet "
+                id="FechaObtencionConicet"
+                class="form-control"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Categoria Investigador CIC</label
+                >
+              </div>
+              <select class="custom-select" id="selectorCic">
+                <option selected>Seleccione una</option>
+                <option value="1">SUPERIOR</option>
+                <option value="2">PRINCIPAL</option>
+                <option value="3">INDEPENDIENTE</option>
+                <option value="4">ADJUNTO</option>
+                <option value="5">ASISTENTE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Numero Resolucion</label>
+              <input
+                type="number"
+                name="numResolucionCic "
+                id="numResolucionCic"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Fecha de Obtencion</label>
+              <input
+                min="2010-01-01"
+                max="2020-12-31"
+                type="date"
+                name="FechaObtencionCic "
+                id="FechaObtencionCic"
+                class="form-control"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-outline-danger"
+              onclick="modificarPersona()"
+            >
+              Modificar
+            </button>
+          </form>
+        </div>
+
+        <!--ACA TERMINA EL FORM DE SOLICITUD PARA LA MODIFICACION DE UNA PERSONA-->
+
+        <!--ACA EMPIEZA EL FORM DE ALTAS DE TRABAJOS-->
+
+        <div class="hide" id="formTipoTrabajo">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text">Tipo de Trabajo</label>
+            </div>
+            <select class="custom-select" id="tipoTrabajo">
+              <option selected>Seleccione uno</option>
+              <option value="1">Reunion</option>
+              <option value="2">Revista/articulo</option>
+              <option value="3">Escrito</option>
+              <option value="4">Evento</option>
+              <option value="5">Comunicado</option>
+            </select>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              onclick="cargarFormTrabajo()"
+            >
+              Cargar
+            </button>
+          </div>
+        </div>
+        <!--ACA TERMINA EL FORM DE ALTAS DE TRABAJOS-->
+
+        <!--ACA EMPIEZA EL FORM DE ALTAS DE REUNIONES-->
+        <div class="hide" id="formReuniones">
+          <div class="form-group">
+            <label for="name">Nombre de la reunion*</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombreReunion"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Dni del realizador*</label>
+            <input type="number" name=dniRealizadorReunion"
+            id="dniRealizadorReunion" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="name">Dni del Expositor*</label>
+            <input
+              type="number"
+              name="dniExpositorReunion"
+              id="dniExpositorReunion"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radioReunionInternacional" name="radio" />
+            <label>Reunion Internacional</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radioReunionNacional" name="radio" />
+            <label>Reunion Nacional</label>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="name">Titulo del trabajo*</label>
+            <input
+              type="text"
+              name="nombre"
+              id="tituloTrabajoReunion"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Fecha de inicio*</label>
+            <input
+              min="2010-01-01"
+              max="2020-12-31"
+              type="date"
+              name="nombre"
+              id="fechaInicioReunion"
+              class="form-control"
+              required
+              placeholder="DDMMAAAA"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Pais </label>
+            <input
+              type="text"
+              name="paisReunion"
+              id="paisReunion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Ciudad </label>
+            <input
+              type="text"
+              name="ciudadReunion"
+              id="ciudadReunion"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-success" onclick="agregarReunion()">
+            Agregar Reunion
+          </button>
+        </div>
+        <!--ACA TERMINA EL FORM DE ALTAS DE REUNIONES-->
+
+        <!--ACA EMPIEZA EL FORM DE ALTAS DE Revisas y articulos -->
+        <div class="hide" id="formRevistaYArticulo">
+          <div class="input-group">
+            <select
+              class="custom-select"
+              id="tipoArticulo"
+              aria-label="Example select with button addon"
+            >
+              <option selected>Seleccione uno</option>
+              <option value="1">
+                Trabajos publicados en Revistas Nacionales con referato
+              </option>
+              <option value="2">
+                Trabajos publicados en Revistas Nacionales sin referato
+              </option>
+              <option value="3">
+                Presentación de artículos con referato en Congresos
+              </option>
+              <option value="4">
+                Presentación de artículos con referato en Congresos Nacionales
+              </option>
+            </select>
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="cargarFormRevistaArticulo()"
+              >
+                Cargar Formulario
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hide" id="formRevista">
+          <div class="form-group">
+            <label for="name"> Nombre de Revista *</label>
+            <input
+              type="text"
+              name="nombreRevista"
+              id="nombreRevista"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="name"> Pais</label>
+            <input
+              type="text"
+              name="paisRevista"
+              id="paisRevista"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Editorial</label>
+            <input
+              type="text"
+              name="editorialRevista"
+              id="editorialRevista"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> ISSN :</label>
+            <input
+              type="text"
+              name="ISSNRevista"
+              id="ISSNRevista"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Titulo del trabajo:</label>
+            <input
+              type="text"
+              name="tituloRevista"
+              id="tituloRevista"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Autores: </label>
+            <input
+              type="text"
+              name="autoresRevista"
+              id="autoresRevista"
+              class="form-control"
+            />
+            <span class="obligatorio">(separa autores con comas)</span>
+          </div>
+          <button class="btn btn-success" onclick="agregarRevista()">
+            Agregar Revista
+          </button>
+        </div>
+
+        <!-- -------------------------------------- ------------------------------ ---------------------------->
+
+        <div class="hide" id="formArticulo">
+          <div class="form-group">
+            <label> Nombre de articulo *:</label>
+            <input
+              type="text"
+              name="nombreArticulo"
+              id="nombreArticulo"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label> Lugar :</label>
+            <input
+              type="text"
+              name="lugarArticulo"
+              id="lugarArticulo"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Fecha del articulo: </label>
+            <input
+              min="2010-01-01"
+              max="2020-12-31"
+              type="date"
+              name="fechaArticulo "
+              id="fechaArticulo"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Autores: </label>
+            <input
+              type="text"
+              name="autoresArticulo"
+              id="autoresArticulo"
+              class="form-control"
+            />
+            <span class="obligatorio">(separa autores con comas)</span>
+          </div>
+
+          <button class="btn btn-success" onclick="agregarArticulo()">
+            Agregar Articulo
+          </button>
+        </div>
+        <!--ACA termina EL FORM DE ALTAS DE Revisas y articulos -->
+
+        <!--ACA EMPIEZA EL FORM DE ALTAS DE ESCRITOS -->
+
+        <div class="hide" id="formEscrito">
+          <label> Seleccione tipo de Escrito</label>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radioEscrito1" name="radio" />
+            <label for="radio1">Libro</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radioEscrito2" name="radio" />
+            <label for="radio2">Capitulo</label>
+          </div>
+          <div class="form-group">
+            <label> Nombre del Libro / Capitulo *:</label>
+            <input
+              type="text"
+              name="nombreEscrito"
+              id="nombreEscrito"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label> Autor :</label>
+            <input
+              type="text"
+              name="autorEscrito"
+              id="autorEscrito"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> ISBN:</label>
+            <input
+              type="text"
+              name="ISBNEscrito"
+              id="ISBNEscrito"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Editorial:</label>
+            <input
+              type="text"
+              name="editorialEscrito"
+              id="editorialEscrito"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-success" onclick="agregarEscrito()">
+            Agregar Escrito
+          </button>
+        </div>
+        <!--ACA TERMINA  EL FORM DE ALTAS DE ESCRITOS -->
+
+        <!--ACA EMPIEZA  EL FORM DE ALTAS DE EVENTOS -->
+        <div class="hide" id="formEvento">
+          <div class="form-group">
+            <div class="obligatorio">los campos con (*) son obligatorios.</div>
+            <br />
+            <label> Nombre del evento*:</label>
+            <input
+              type="text"
+              name="nombreEvento"
+              id="nombreEvento"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label> Fecha del Evento: </label>
+            <input
+              min="2010-01-01"
+              max="2020-12-31"
+              type="date"
+              name="fechaEvento "
+              id="fechaEvento"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Lugar:</label>
+            <input
+              type="text"
+              name="lugarEvento"
+              id="lugarEvento"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Descripción de evento </label>
+            <textarea
+              class="form-control"
+              id="descripcionEvento"
+              rows="3"
+            ></textarea>
+          </div>
+          <button class="btn btn-success" onclick="agregarEvento()">
+            Agregar Evento
+          </button>
+        </div>
+        <!--ACA TERMINA  EL FORM DE ALTAS DE EVENTOS -->
+
+        <!--ACA EMPIEZA  EL FORM DE ALTAS DE DIVULGACIONES  -->
+
+        <div class="hide" id="formDivulgacion">
+          <br />
+          <select
+            class="custom-select"
+            id="tipoDivulgacion"
+            aria-label="Example select with button addon"
+          >
+            <option selected>Seleccione uno</option>
+            <option value="1">Articulo de divulgacion</option>
+            <option value="2">Informes</option>
+            <option value="3">Memorias Tecnicas</option>
+          </select>
+          <br />
+          <br />
+          <div class="obligatorio">los campos con (*) son obligatorios</div>
+          <div class="form-group">
+            <label> Nombre*:</label>
+            <input
+              type="text"
+              name="tipoDivulgacion"
+              id="tipoDivulgacion"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label> Tipo:</label>
+            <input
+              type="text"
+              name="tipoDivulgacion"
+              id="tipoDivulgacion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Lugar:</label>
+            <input
+              type="text"
+              name="lugarDivulgacion"
+              id="lugarDivulgacion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label>Enlace:</label>
+            <input
+              type="text"
+              name="enlaceDivulgacion"
+              id="enlaceDivulgacion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label> Fecha publicación : </label>
+            <input
+              min="2010-01-01"
+              max="2020-12-31"
+              type="date"
+              name="fechaDivulgacion "
+              id="fechaDivulgacion"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-success" onclick="agregarDivulgacion()">
+            Agregar
+          </button>
+        </div>
+        <!--ACA TERMINA  EL FORM DE ALTAS DE DIVULGACIONES  -->
+
+        <!--ACA EMPIEZA  EL FORM DE BAJAS DE TRABAJOS  -->
+        <div class="hide" id="formBajaTrabajo">
+          <h3>Seleccionar tipo de trabajo que se desea dar de baja :</h3>
+          <select class="custom-select" id="tipoTrabajoBaja">
+            <option selected>Seleccione uno</option>
+            <option value="1">Reunion nacional</option>
+            <option value="2">Reunion internacional</option>
+            <option value="3">Trabajos publicados en revistas</option>
+            <option value="4">Presentacion de articulos a congresos</option>
+            <option value="5">Libro</option>
+            <option value="6">Capitulo</option>
+            <option value="7">Evento</option>
+            <option value="8">Articulo de divulgacion</option>
+            <option value="9">Informes</option>
+            <option value="10">Memorias Tecnicas</option>
+          </select>
+          <br /><br />
+          <div class="obligatorio">los campos con (*) son obligatorios</div>
+          <div class="form-group">
+            <label> Nombre*:</label>
+            <input
+              type="text"
+              name="nombreBajaTrabajo"
+              id="nombreBajaTrabajo"
+              class="form-control"
+              required
+            />
+          </div>
+          <button
+            class="btn btn-outline-danger"
+            onclick="confirmarBajaTrabajo()"
+          >
+            Confirmar Baja
+          </button>
+        </div>
+        <!--ACA TERMINA EL FORM DE BAJAS DE TRABAJOS  -->
+
+        <!--ACA EMPIEZA  EL FORM DE MODIFICACIONES DE TRABAJOS  -->
+        <div class="hide" id="formInicioModificacionTrabajo">
+          <h3>Seleccionar tipo de trabajo que se desea modificar :</h3>
+          <select class="custom-select" id="tipoTrabajoModificacion">
+            <option selected>Seleccione uno</option>
+            <option value="1">Reunion nacional</option>
+            <option value="2">Reunion internacional</option>
+            <option value="3">Trabajos publicados en revistas</option>
+            <option value="4">Presentacion de articulos a congresos</option>
+            <option value="5">Libro</option>
+            <option value="6">Capitulo</option>
+            <option value="7">Evento</option>
+            <option value="8">Articulo de divulgacion</option>
+            <option value="9">Informes</option>
+            <option value="10">Memorias Tecnicas</option>
+          </select>
+          <div class="obligatorio">los campos con (*) son obligatorios</div>
+          <div class="form-group">
+            <label> Nombre*:</label>
+            <input
+              type="text"
+              name="nombreModificacionTrabajo"
+              id="nombreModificacionTrabajo"
+              class="form-control"
+              required
+            />
+          </div>
+          <button class="btn btn-success" onclick="modificacionSegundaParte()">
+            Iniciar Modificacion
+          </button>
+        </div>
+        <!--ACA TERMINA   EL FORM DE MODIFICACIONES DE TRABAJOS  -->
+
+        <!--ACA EMPIEZA    EL FORM DE CONSULTAS  DE TRABAJOS  -->
+
+        <div class="hide" id="formConsultaTrabajo">
+          <h3>Seleccionar tipo de trabajo que se desea modificar :</h3>
+          <select class="custom-select" id="tipoTrabajoConsulta">
+            <option selected>Seleccione uno</option>
+            <option value="1">Reunion nacional</option>
+            <option value="2">Reunion internacional</option>
+            <option value="3">Trabajos publicados en revistas</option>
+            <option value="4">Presentacion de articulos a congresos</option>
+            <option value="5">Libro</option>
+            <option value="6">Capitulo</option>
+            <option value="7">Evento</option>
+            <option value="8">Articulo de divulgacion</option>
+            <option value="9">Informes</option>
+            <option value="10">Memorias Tecnicas</option>
+          </select>
+          <div class="obligatorio">los campos con (*) son obligatorios</div>
+          <div class="form-group">
+            <label> Nombre*:</label>
+            <input
+              type="text"
+              name="nombreConsultaTrabajo"
+              id="nombreConsultaTrabajo"
+              class="form-control"
+              required
+            />
+          </div>
+          <button class="btn btn-outline-success" onclick="consultaRealizada()">
+            Realizar Consulta
+          </button>
+        </div>
+        <!--ACA TERMINA   EL FORM DE CONSULTAS  DE TRABAJOS  -->
+
+        <div class="col-sm-9">
+          <div class="template"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./assets/js/giuctHome.js"></script>
+  </body>
+</html>

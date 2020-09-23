@@ -1,0 +1,88 @@
+* {
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+body {
+  background-color: rgb(255, 255, 255);
+}
+.template {
+  margin: 1%;
+  padding: 1%;
+  max-width: 50%;
+}
+.abs-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}
+.cartelRespuesta {
+  margin: 10em 5em;
+}
+
+span form {
+  background-color: #ffffff;
+  font-weight: bold;
+  width: 450px;
+  border: 1px solid black;
+}
+
+#login {
+  margin-left: 40%;
+}
+
+.logo {
+  color: white;
+}
+
+.header {
+  background-color: rgb(5, 1, 59);
+  overflow: hidden;
+  display: block;
+  flex: initial;
+  text-align: center;
+  font-size: 300%;
+  font-weight: bold;
+}
+.logo {
+  color: white;
+  margin-top: 7%;
+  padding: 1%;
+}
+.cerebro {
+  width: 100%;
+}
+
+.nav-link.dropdown-toggle {
+  width: 140px;
+  padding: 5%;
+  margin: 10%;
+}
+
+.aleatorio {
+  padding: 1%;
+  margin: 3% 20%;
+  max-width: 30%;
+}
+
+.hide {
+  display: none;
+}
+
+.siEsAlumno {
+  display: none;
+}
+.siEsGraduado {
+  display: none;
+}
+.siEsDocente {
+  display: none;
+}
+
+.obligatorio {
+  font-style: oblique;
+  margin-left: 10%;
+  font-size: small;
+}
+.alert-success {
+  margin-top: 5%;
+}
