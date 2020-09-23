@@ -186,42 +186,39 @@ function modificacionTrabajo() {
 }
 function modificacionSegundaParte() {
   let tipo = $(".template #tipoTrabajoModificacion").val();
-  switch (tipo) {
-    case 1:
-      let formReunion = $("#formReuniones").html();
-      $(".template").empty();
-      $(".template").append(formReunion);
-      break;
-    case 2:
-      let formReunion1 = $("#formReuniones").html();
-      $(".template").empty();
-      $(".template").append(formReunion1);
-      break;
-    case 3:
+
+  if (tipo == 1) {
+    let formReunion = $("#formReuniones").html();
+    $(".template").empty();
+    $(".template").append(formReunion);
+  } else {
+    if (tipo == 2) {
       let formRevista = $("#formRevista").html();
       $(".template").empty();
       $(".template").append(formRevista);
-      break;
-    case 4:
-      let formArticulo = $("#formArticulo").html();
-      $(".template").empty();
-      $(".template").append(formArticulo);
-      break;
-    case 5:
-      let formEscrito = $("#formEscrito").html();
-      $(".template").empty();
-      $(".template").append(formEscrito);
-      break;
-    case 6:
-      break;
-    case 7:
-      break;
-    case 8:
-      break;
-    case 9:
-      break;
-    case 10:
-      break;
+    } else {
+      if (tipo == 3) {
+        let formEscrito = $("#formEscrito").html();
+        $(".template").empty();
+        $(".template").append(formEscrito);
+
+      } else {
+        if (tipo == 4) {
+          let formEvento = $("#formEvento").html();
+          $(".template").empty();
+          $(".template").append(formEvento);
+        } else {
+          if (tipo == 5) {
+            let formDivulgacion = $("#formDivulgacion").html();
+            $(".template").empty();
+            $(".template").append(formDivulgacion);
+          } else {
+            $(".template").empty();
+            $(".template").append("No es posible procesar la solicitud! ");
+          }
+        }
+      }
+    }
   }
 }
 function consultaTrabajo() {
